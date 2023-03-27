@@ -27,6 +27,7 @@ func StartApp() *gin.Engine {
 	router.GET("/categories/:id", controllers.GetBooksByCategoryIDHandler)
 
 	router.GET("/books", controllers.GetBooks)
+	router.Use(controllers.AuthMiddleware(users))
 	router.POST("/books", controllers.InsertBooks)
 	router.PUT("/books/:id", controllers.UpdateBooks) //GetBooks
 	router.DELETE("/books/:id", controllers.DeleteBooks)
